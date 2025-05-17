@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أذكار ما بعد الصلاة</title>
+    <style>
+        :root {
+            --primary-color: #1565C0;  /* Midnight Blue */
+            --dark-bg: #0A0A0A;       /* Bright Black */
+            --card-bg: #121A2A;       /* Dark Midnight Blue */
+            --text-color: #E0E0E0;
+            --border-color: #1E3A8A;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .dhikr-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .dhikr-title {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .dhikr-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .counter-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .counter-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .counter-btn:hover {
+            background-color: #0D47A1;
+        }
+        
+        .counter-display {
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .reset-btn {
+            background-color: #1E3A8A;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .reset-btn:hover {
+            background-color: #1A237E;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .dhikr-card {
+                padding: 15px;
+            }
+            
+            .dhikr-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>أذكار ما بعد الصلاة</h1>
+            <p>الذكر بعد الصلاة من أعظم العبادات التي يتقرب بها العبد إلى ربه</p>
+        </header>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">أستغفر الله</h2>
+            <p class="dhikr-text">(ثلاثًا وثلاثين مرة)</p>
+            <div class="counter-container">
+                <button class="counter-btn" onclick="incrementCounter('istighfar')">اضغط للعد</button>
+                <span class="counter-display" id="istighfar-counter">0</span>
+                <button class="reset-btn" onclick="resetCounter('istighfar')">إعادة</button>
+            </div>
+        </div>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">سبحان الله</h2>
+            <p class="dhikr-text">(ثلاثًا وثلاثين مرة)</p>
+            <div class="counter-container">
+                <button class="counter-btn" onclick="incrementCounter('tasbeeh')">اضغط للعد</button>
+                <span class="counter-display" id="tasbeeh-counter">0</span>
+                <button class="reset-btn" onclick="resetCounter('tasbeeh')">إعادة</button>
+            </div>
+        </div>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">الحمد لله</h2>
+            <p class="dhikr-text">(ثلاثًا وثلاثين مرة)</p>
+            <div class="counter-container">
+                <button class="counter-btn" onclick="incrementCounter('tahmeed')">اضغط للعد</button>
+                <span class="counter-display" id="tahmeed-counter">0</span>
+                <button class="reset-btn" onclick="resetCounter('tahmeed')">إعادة</button>
+            </div>
+        </div>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">تكبيرة الإكمال</h2>
+            <p class="dhikr-text">الله أكبر كبيرًا، والحمد لله كثيرًا، وسبحان الله بكرة وأصيلًا</p>
+        </div>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">آية الكرسي</h2>
+            <p class="dhikr-text">اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ</p>
+        </div>
+        
+        <div class="dhikr-card">
+            <h2 class="dhikr-title">سورة الإخلاص والمعوذتين</h2>
+            <p class="dhikr-text">(قل هو الله أحد) (ثلاث مرات)<br>
+            (قل أعوذ برب الفلق) (مرة واحدة)<br>
+            (قل أعوذ برب الناس) (مرة واحدة)</p>
+        </div>
+        
+        <footer>
+            <p>قال رسول الله ﷺ: "من سبح الله في دبر كل صلاة ثلاثًا وثلاثين، وحمد الله ثلاثًا وثلاثين، وكبر الله ثلاثًا وثلاثين، فتلك تسعة وتسعون، وقال تمام المائة: لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، غفرت خطاياه وإن كانت مثل زبد البحر"</p>
+            <p>رواه مسلم</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize counters
+        const counters = {
+            istighfar: 0,
+            tasbeeh: 0,
+            tahmeed: 0
+        };
+        
+        // Function to increment counter
+        function incrementCounter(type) {
+            if (counters[type] < 33) {
+                counters[type]++;
+                document.getElementById(`${type}-counter`).textContent = counters[type];
+                
+                // Check if reached 33
+                if (counters[type] === 33) {
+                    document.querySelector(`button[onclick="incrementCounter('${type}')"]`).disabled = true;
+                    alert(`تم إكمال ${type === 'istighfar' ? 'الاستغفار' : type === 'tasbeeh' ? 'التسبيح' : 'التحميد'} 33 مرة!`);
+                }
+            }
+        }
+        
+        // Function to reset counter
+        function resetCounter(type) {
+            counters[type] = 0;
+            document.getElementById(`${type}-counter`).textContent = '0';
+            document.querySelector(`button[onclick="incrementCounter('${type}')"]`).disabled = false;
+        }
+    </script>
+</body>
+</html>
